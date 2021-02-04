@@ -62,7 +62,7 @@
         <v-card class="my-2">
           <v-card-title>STATUS</v-card-title>
           <v-card-text>
-            <v-text-field disabled outlined :value="response.status"></v-text-field>
+            <v-text-field readonly outlined :value="response.status"></v-text-field>
           </v-card-text>
         </v-card>
         <v-card class="my-2">
@@ -96,7 +96,7 @@
         <v-card class="my-2">
           <v-card-title>BODY</v-card-title>
           <v-card-text>
-            <v-textarea disabled outlined v-model="response.body" auto-grow></v-textarea>
+            <v-textarea readonly outlined v-model="response.body" auto-grow></v-textarea>
           </v-card-text>
         </v-card>
       </v-col>
