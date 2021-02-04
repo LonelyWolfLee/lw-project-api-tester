@@ -31,7 +31,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer"><v-icon>{{ icons.mdiMenu }}</v-icon></v-app-bar-nav-icon>
       <v-toolbar-title>LW API TESTER</v-toolbar-title>
     </v-app-bar>
 
@@ -42,13 +42,18 @@
 </template>
 
 <script>
+import { mdiApi } from "@mdi/js"
+import { mdiMenu } from '@mdi/js';
 export default {
   name: 'App',
   data: () => ({
+    icons: {
+      mdiMenu
+    },
     cards: ['Today', 'Yesterday'],
     drawer: null,
     links: [
-      ['mdi-api', 'Call Test', '/call'],
+      [mdiApi, 'Call Test', '/call'],
       // ['mdi-history', 'Call History', '/history'],
     ],
   }),

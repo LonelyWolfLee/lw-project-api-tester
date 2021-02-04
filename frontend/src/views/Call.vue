@@ -41,7 +41,7 @@
                 >
                   <td>{{ item.key }}</td>
                   <td>{{ item.value }}</td>
-                  <td><v-icon @click="deleteHeader(item)">mdi-delete</v-icon></td>
+                  <td><v-icon @click="deleteHeader(item)" role="img" aria-hidden="false">{{ icons.mdiDelete }}</v-icon></td>
                 </tr>
                 </tbody>
               </template>
@@ -117,10 +117,14 @@
 </style>
 
 <script>
+import { mdiDelete } from "@mdi/js"
 let axios = require('axios');
 export default {
   name: 'Api',
   data: () => ({
+    icons: {
+      mdiDelete
+    },
     request: {
       method: "POST",
       uri: "",
