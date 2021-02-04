@@ -49,7 +49,7 @@ export default {
     drawer: null,
     links: [
       ['mdi-api', 'Call Test', '/call'],
-      ['mdi-history', 'Call History', '/history'],
+      // ['mdi-history', 'Call History', '/history'],
     ],
   }),
 }
