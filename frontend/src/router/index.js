@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Api from '../views/Api.vue'
+import Call from '../views/Call.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +8,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    redirect: { name: 'Api' }
+    redirect: { name: 'Call' }
   },
   {
-    path: '/api',
-    name: 'Api',
-    component: Api
+    path: '/call',
+    name: 'Call',
+    component: Call
   },
   {
     path: '/history',
