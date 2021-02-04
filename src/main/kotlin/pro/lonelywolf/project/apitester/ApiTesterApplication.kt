@@ -1,17 +1,32 @@
 package pro.lonelywolf.project.apitester
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.context.annotation.Bean
+import org.springframework.core.io.Resource
 import org.springframework.http.HttpMethod
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.server.RequestPredicates.GET
+import org.springframework.web.reactive.function.server.RouterFunction
+import org.springframework.web.reactive.function.server.RouterFunctions.route
+import org.springframework.web.reactive.function.server.ServerResponse
+import org.springframework.web.reactive.function.server.ServerResponse.ok
 import reactor.core.publisher.Mono
 
+
 @SpringBootApplication
-class ApiTesterApplication
+class ApiTesterApplication {
+  @Bean
+  fun htmlRouter(@Value("classpath:/static/index.html") html: Resource): RouterFunction<ServerResponse> {
+    return route(GET("/")) { ok().contentType(MediaType.TEXT_HTML).bodyValue(html) }
+  }
+}
 
 fun main(args: Array<String>) {
   runApplication<ApiTesterApplication>(*args)
@@ -19,7 +34,7 @@ fun main(args: Array<String>) {
 
 @RestController
 @RequestMapping("api")
-class ApiTesterController {
+class ApiController {
   private val client: WebClient = WebClient.create()
 
   @PostMapping("request/call")
