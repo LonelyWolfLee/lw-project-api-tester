@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class LwProjectApiTesterApplication
+class ApiTesterApplication
 
 fun main(args: Array<String>) {
-  runApplication<LwProjectApiTesterApplication>(*args)
+  runApplication<ApiTesterApplication>(*args)
 }
