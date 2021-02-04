@@ -158,11 +158,6 @@ export default {
         return;
       }
 
-      if(!this.request.body) {
-        alert("No request body");
-        return;
-      }
-
       this.response.status = "";
       this.response.headers = [];
       this.response.body = "";
@@ -170,17 +165,16 @@ export default {
       let myResponse = this.response;
       axios.post("/api/request/call", this.request)
         .then(function (response) {
-          myResponse.status = response.status + " " + response.statusText;
-          Object.keys(response.headers)
-              .forEach(headerKey => myResponse.headers.push({key: headerKey, value: response.headers[headerKey]}));
-          myResponse.body = response.data;
+          myResponse.status = response.data.status;
+          myResponse.headers = response.data.headers;
+          myResponse.body = response.data.body;
         })
         .catch(function (error) {
           if (error.response) {
             myResponse.status = error.response.status + " " + error.response.statusText;
             Object.keys(error.response.headers)
                 .forEach(headerKey => myResponse.headers.push({key: headerKey, value: error.response.headers[headerKey]}));
-            myResponse.body = error.response.data;
+            myResponse.body = error.response.data.message;
           }
           else if (error.request) {
             alert("No response error")
