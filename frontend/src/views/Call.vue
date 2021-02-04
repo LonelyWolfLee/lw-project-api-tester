@@ -142,7 +142,7 @@ export default {
     insertHeader(text) {
       let headerElements = text.split("=");
       if (headerElements.length === 2) {
-        this.request.headers.push({key: headerElements[0], value: headerElements[1]});
+        this.request.headers.push({key: headerElements[0].trim(), value: headerElements[1].trim()});
         this.insertedHeader = "";
       } else {
         alert("잘못된 HEADER 형식");
