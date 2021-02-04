@@ -48,7 +48,7 @@ export default {
     cards: ['Today', 'Yesterday'],
     drawer: null,
     links: [
-      ['mdi-api', 'API Test', '/api'],
+      ['mdi-api', 'Call Test', '/call'],
       ['mdi-history', 'Call History', '/history'],
     ],
   }),
