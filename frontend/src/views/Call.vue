@@ -153,8 +153,6 @@ export default {
       this.request.headers.splice(idx, 1);
     },
     sendRequest() {
-      let my = this;
-
       if(!this.request.uri) {
         alert("No request uri");
         return;
@@ -169,21 +167,20 @@ export default {
       this.response.headers = [];
       this.response.body = "";
 
+      let myResponse = this.response;
       axios.post("/api/request/call", this.request)
         .then(function (response) {
-          this.response.status = response.status + " " + response.statusText;
-          for (let headerKey in response.headers) {
-            this.response.headers.push({key: headerKey, value: response.headers[headerKey]});
-          }
-          this.response.body = response.data;
+          myResponse.status = response.status + " " + response.statusText;
+          Object.keys(response.headers)
+              .forEach(headerKey => myResponse.headers.push({key: headerKey, value: response.headers[headerKey]}));
+          myResponse.body = response.data;
         })
         .catch(function (error) {
           if (error.response) {
-            my.response.status = error.response.status + " " + error.response.statusText;
-            for (let headerKey in error.response.headers) {
-              my.response.headers.push({key: headerKey, value: error.response.headers[headerKey]});
-            }
-            my.response.body = error.response.data;
+            myResponse.status = error.response.status + " " + error.response.statusText;
+            Object.keys(error.response.headers)
+                .forEach(headerKey => myResponse.headers.push({key: headerKey, value: error.response.headers[headerKey]}));
+            myResponse.body = error.response.data;
           }
           else if (error.request) {
             alert("No response error")
