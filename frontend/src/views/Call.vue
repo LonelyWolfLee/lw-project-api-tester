@@ -1,5 +1,5 @@
 <template>
-  <div class="api">
+  <div class="call">
     <v-row>
       <v-col class="request" cols="12" sm="6">
         <h2>REQUEST</h2>
@@ -105,7 +105,7 @@
 </template>
 
 <style scoped>
-.api {
+.call {
   margin: 32px;
 }
 .request {
@@ -120,7 +120,7 @@
 import { mdiDelete } from "@mdi/js"
 let axios = require('axios');
 export default {
-  name: 'Api',
+  name: 'Call',
   data: () => ({
     icons: {
       mdiDelete
