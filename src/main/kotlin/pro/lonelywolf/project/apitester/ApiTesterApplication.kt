@@ -21,12 +21,7 @@ import reactor.core.publisher.Mono
 
 
 @SpringBootApplication
-class ApiTesterApplication {
-  @Bean
-  fun htmlRouter(@Value("classpath:/static/index.html") html: Resource): RouterFunction<ServerResponse> {
-    return route(GET("/")) { ok().contentType(MediaType.TEXT_HTML).bodyValue(html) }
-  }
-}
+class ApiTesterApplication
 
 fun main(args: Array<String>) {
   runApplication<ApiTesterApplication>(*args)
