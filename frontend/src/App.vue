@@ -8,7 +8,7 @@
           color="primary lighten-3"
           class="pa-10"
       >
-        <h1>Version : v 0.1</h1>
+        <h1>Version : v 0.2</h1>
       </v-sheet>
 
       <v-divider></v-divider>
@@ -48,8 +48,8 @@ export default {
     cards: ['Today', 'Yesterday'],
     drawer: null,
     links: [
-      ['mdi-api', 'API Test', '/api'],
-      ['mdi-history', 'Call History', '/history'],
+      ['mdi-api', 'Call Test', '/call'],
+      // ['mdi-history', 'Call History', '/history'],
     ],
   }),
 }
